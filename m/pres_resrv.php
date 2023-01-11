@@ -7,14 +7,13 @@ if(!$_SESSION['mdp']){
 }
 //AJOUT
 if(isset($_POST['Ajouter'])){
-    if(!empty($_POST['dat_sjr'])AND!empty($_POST['nbr_prtcp'])AND!empty($_POST['nom'])AND!empty($_POST['prenom'])AND!empty($_POST['dat_nt'])AND!empty($_POST['nom_actvt'])AND!empty($_POST['type_actvt'])){
+    if(!empty($_POST['dat_sjr'])AND!empty($_POST['nbr_prtcp'])AND!empty($_POST['nom_actvt'])AND!empty($_POST['type_actvt'])){
         $insert = $bdd->prepare('INSERT INTO actvt(nom_actvt,type_actvt) VALUES(?,?)');
         $insert->execute(array($_POST['nom_actvt'],$_POST['type_actvt']));
-        $insert = $bdd->prepare('INSERT INTO client(nom,prenom) VALUES(?,?,?)');
-        $insert->execute(array($_POST['nom'],$_POST['prenom'],$_POST['dat_n']));
+
         $insert = $bdd->prepare('INSERT INTO sjr(nbr_prtcp,dat_sjr) VALUES(?,?)');
         $insert->execute(array($_POST['nbr_prtcp'],$_POST['dat_sjr']));
-        header('Location: Admin_actvt_srvs.php');
+        header('Location: pres_resrv.php');
     }else{
         $err="veuillez completer toutes les champs...";
     }
@@ -43,36 +42,31 @@ if(isset($_POST['Ajouter'])){
         while($user = $recupuser->fetch()){
         ?>
         <div class="Description">
-            <p><label for="dat_sjr">Date sejeur :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['dat_sjr'];?></span></p>
-            <p><label for="nbr_prtcp">Nombre de participants :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['nbr_prtcp'];?></span></p>
+            <p><label for="dat_sjr">Date sejeur :</label><span style="color: #ff4800;margin-left: 15%;"><?= $user['dat_sjr'];?></span></p>
+            <p><label for="nbr_prtcp">Nombre de participants :</label><span style="color: #ff4800;margin-left: 15%;"><?= $user['nbr_prtcp'];?></span></p>
             <p><label for="nom_actvt">Nom Activité :</label><span style="width: 170px;height: 20px;text-align: center;color: white;"><?= $user['nom_actvt'];?></span></p>
-            <p><label for="type_actvt">Type d'activité :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['type_actvt'];?></span></p>
+            <p><label for="type_actvt">Type d'activité :</label><span style="color: #ff4800;margin-left: 15%;"><?= $user['type_actvt'];?></span></p>
         </div>
         <?php
          } 
         ?>
     <form method="POST" class="frm">
         <h4>Crée une Prés-reservation</h4>
-        <p style="margin-left: -40%;"><label for="dat_sjr">Dat de séjeur :<input type="date" name="dat_sjr"></label></p>
-        <p style="margin-left: -30%;"><label for="nbr_prtcp">Nombre de participants <input type="number" name="nbr_prtcp"><a href="#">confirmer</a></label></p>
-        
-        <?php
-        $n=1;
-        if(!empty($_GET["nbr_prctp"])){?>
-            <p style="margin-left: -40%;">Leurs Informations</p>
+        <p style="margin-left: -10rem;"><label for="dat_sjr">Dat de séjeur :<input type="date" name="dat_sjr"></label></p>
 
-        <?php
-        while($n<$nbrp){
-        ?>
-        <p style="margin-left: -40%;"><label for="nom">Nom :<input type="text" name="dat_sjr"></label></p>
-        <p style="margin-left: -40%;"><label for="prenom">Prenom :<input type="date" name="dat_sjr"></label><</p>
-        <p style="margin-left: -40%;"><label for="dat_n">Date de naissance :<input type="date" name="dat_n"></label><</p>
-        <?php
-        $n++;    
-    }
-        }?>
-        <p style="margin-left: -40%;"><label for="nom_actvt">Nom Activité :<input type="text" name="nom_actvt"></label><</p>
-        <p style="margin-left: -40%;"><label for="type_actvt">Type Activité:<input type="text" name="type_actvt"></label><</p>
+        <p style="margin-left: -10rem;">
+            <label for="nom_actvt">Nom Activité :
+            <?php
+            $recupuser = $bdd->query('SELECT * FROM actvt');
+            while($user = $recupuser->fetch()){
+           ?>
+            <p style="display:flex;"><input type="radio" style="width: 1rem;height: 1rem;" name="nom_actvt"><span style="color: #ff4800;margin-left: 3rem;margin-top: -0.4rem;font-weight: bold;"><?= $user['nom_actvt'];?></span></p>
+            <?php
+          } 
+          ?>
+            </input>
+            </label></p>
+        <p style="margin-left: -4rem;"><label for="nbr_prtcp">Nombre de participants <input style="width: 5rem;margin-right: 3rem;"type="number" name="nbr_prtcp"></label></p>
         <input type="submit" value="Ajouter" class="subm" name="Ajouter">
     </form>
 

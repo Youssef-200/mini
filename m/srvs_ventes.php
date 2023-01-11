@@ -13,7 +13,7 @@ include("connect_bd.php");
 </head>
 <body>
 <div class="index">
-    <?php include("para_sec.php");?>
+    <?php include("para_ventes.php");?>
         <div class="desc">
             <h2 style="margin-top: 5%;">Services</h2>
             <h5 style="margin-left: 20%; color: crimson;"><?=  $err; ?></h5>

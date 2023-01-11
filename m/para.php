@@ -1,6 +1,4 @@
 <?php
-session_start();
-$err = "";
 $bdd=new PDO('mysql:host=localhost:5000;dbname=m;charset=utf8;','root','');
 $z=$bdd->prepare('SELECT * FROM emp');
 $z->execute();
@@ -18,23 +16,23 @@ if(isset($_POST['Entrer'])){
             $v=1;
             switch($z[$i]['post']){
                     case 'admin_infra':
-                        header('Location: admin_infra_strctr.php');
+                        include("para_infra.php");
                         $j = 1;
                         break;
                     case 'dericteur':
-                        header('Location:hotel_directeur.php');
+                        include("para_infra.php");
                         $j = 2;
                         break;
                     case 'admin_actvt_srvs':
-                        header('Location: admin_actvt_srvs.php');
+                        include("para_infra.php");
                         $j = 3;
                         break;
                     case 'secritaire':
-                            header('Location: secritaire.php');
+                        include("para_infra.php");
                             $j = 4;
                             break;
                     case 'admin_ventes':
-                            header('Location: admin_ventes.php');
+                            include("para_ventes.php");
                             $j = 5;
                             break;
                     default:
@@ -52,26 +50,3 @@ if(isset($_POST['Entrer'])){
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>connexion-admin</title>
-</head>
-<body style="background: url(4.jpg);background-size: cover;position:center;">
-    <div class="adm-main">
-        <p><?= $err; ?></p><br>
-      <form method="POST" class="admin" >
-      <label for="id_emp">Id_emp :</label>
-      <input type="number" name="id_emp" autocomplete="off"><br>
-      <label for="mdp">Password :</label>
-      <input type="password" name="mdp" autocomplete="off"><br>
-      <input type="submit" name="Entrer" value="Entrer">
-      </form>
-    </div>
-</body>
-</html>

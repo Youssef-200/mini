@@ -13,15 +13,9 @@ include("connect_bd.php");
 </head>
 <body>
 <div class="index">
-    <div class="parametres">
-            <h1>Paramétres de site web</h1>
-            <br>
-            <a href="admin_ventes.php">Activite .</a>
-            <br>
-            <a href="srvs.php">Services .</a>
-            <br>
-            <a href="logout.php"><input type="submit" value="Deconnexion" class="subm1"></a>
-    </div>
+<?php 
+            include("para_sec.php");
+            ?>
         <div class="desc">
             <p><h5 style="margin-left: 20%; color: crimson;"><?=  $err; ?></h5></p>
             <h2 style="margin-top: 5%;">Activité</h2>

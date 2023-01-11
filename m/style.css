@@ -627,8 +627,10 @@ ul li a:hover{
     margin-left: -15%;
     font-size: 25px;
 }
-.D
-.frm p{
-    margin-right: 80%;
-  color: rgba(71, 191, 242, 0.585);  
+#srvs{
+    margin-top: -46.5%;
+}
+#actvt{
+  display: block;
+  
 }

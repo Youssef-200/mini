@@ -16,14 +16,14 @@
         ?>
         <div class="desc">
             <h5 style="margin-left: 20%; color: crimson;"><?=  $err; ?></h5>
-            <h2 style="margin-top: 5%;">Service</h2>
+            <h2 style="margin-top: 5%;">Services</h2>
             <?php
             $recupuser = $bdd->query('SELECT * FROM service');
             while($user = $recupuser->fetch()){
            ?>
            <div class="Description">   
                 <p><label >Type :</label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['type_serv'];?></span></p>
-                <p><label >Tarif :</label><span style="color: #ff4800;margin-left: 20%;"><?= $user['tarif'];?></span></p>
+                <p><label >Tarif :</label><span style="color: #ff4800;margin-left: 20%;"><?= $user['tarif'];?>DH</span></p>
                 <p><label for="dat_db">Date debut :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['dat_db'];?></span></p>
                 <p><label for="dat_fn">Dte fin:</label></label> <span style="color: #ff4800;margin-left: 27%;"><?= $user['dat_fn'];?></span></p>
                 <p><label for="heur_db">Commence a :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['heur_db'];?>heur</span></p>
