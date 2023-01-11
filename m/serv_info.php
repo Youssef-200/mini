@@ -1,6 +1,4 @@
-<?php
-include("connect_bd.php");
-?>
+<?php include("connect_bd.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +24,10 @@ include("connect_bd.php");
            <div class="Description">   
                 <p><label >Type :</label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['type_serv'];?></span></p>
                 <p><label >Tarif :</label><span style="color: #ff4800;margin-left: 20%;"><?= $user['tarif'];?></span></p>
+                <p><label for="dat_db">Date debut :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['dat_db'];?></span></p>
+                <p><label for="dat_fn">Dte fin:</label></label> <span style="color: #ff4800;margin-left: 27%;"><?= $user['dat_fn'];?></span></p>
+                <p><label for="heur_db">Commence a :</label></label> <span style="color: #ff4800;margin-left: 15%;"><?= $user['heur_db'];?>heur</span></p>
+                <p><label for="heur_fn">Fini a :</label></label> <span style="color: #ff4800;margin-left: 33%;"><?= $user['heur_fn'];?>heur</span></p>
            </div>
            <?php
           } 
